@@ -29,7 +29,7 @@ module.exports = {
         body: 'like a god',
         kids: 'zero',
         occupation: 'god',
-        userId: i,
+        userId: i + 1,
       });
     }
     return queryInterface.bulkInsert('Profiles', profiles);

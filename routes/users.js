@@ -6,7 +6,7 @@ let Profile = models.Profile;
 var sequelize = models.sequelize;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  User.findAll({}).then(users => {
+  User.findAll({ include: [{ model: Profile }] }).then(users => {
       let arrayOne = [];
       users.map((user, i) => {
         arrayOne[Math.floor(i / 3)] = arrayOne[Math.floor(i / 3)] || [];
@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  User.findById(Number(req.params.id), {include: [{ model: Profile }]}).then(user => {
+  User.findById(Number(req.params.id), { include: [{ model: Profile }] }).then(user => {
       res.render('user', { user });
     })
     .catch(e => {
