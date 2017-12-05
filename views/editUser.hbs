@@ -1,32 +1,33 @@
  <img src="/viking_{{user.Profile.gender}}.jpg">
     <div class="col-md-6">
-    <form class="form-group">
+	    <form class="form-group" action="/users/{{user.id}}/edit" method="post">
       <div class="form-group">
-        <label>First Name:</label><input type="text" placeholder="{{user.fname}}" class="form-control">
+        <label>First Name:</label><input type="text" value="{{user.fname}}" name="fname" class="form-control">
       </div>
       <div class="form-group">
-        <label>Last Name:</label><input type="text" placeholder="{{user.lname}}"class="form-control">
+        <label>Last Name:</label><input type="text" value="{{user.lname}}"name="lname" class="form-control">
       </div>
       <div class="form-group">
-        <label>Username:</label><input type="text" placeholder="{{user.username}}"class="form-control">
+        <label>Username:</label><input type="text" value="{{user.username}}"name="username" class="form-control">
       </div>
       <div class="form-group">
-        <label>Email:</label><input type="text" placeholder="{{user.email}}"class="form-control">
+        <label>Email:</label><input type="text" value="{{user.email}}"name="email" class="form-control">
       </div>
       {{#if user.Profile}}
-      <div>
-        <div><strong>Description:</strong> {{user.Profile.description}}</div>
-        <div><strong>talents:</strong> {{user.Profile.talents}}</div>
-        <div><strong>favorites:</strong> {{user.Profile.favorites}}</div>
-        <div><strong>why:</strong> {{user.Profile.why}}</div>
-        <div><strong>gender:</strong> {{user.Profile.gender}}</div>
-        <div><strong>marital:</strong> {{user.Profile.marital}}</div>
-        <div><strong>height:</strong> {{user.Profile.height}}</div>
-        <div><strong>body:</strong> {{user.Profile.body}}</div>
-        <div><strong>kids:</strong> {{user.Profile.kids}}</div>
-        <div><strong>occupation:</strong> {{user.Profile.occupation}}</div>
-        <div><strong>userId:</strong> {{user.Profile.userId}}</div>
-      </div>
+      <div><label>Description:</label> <input type="text" value="{{user.Profile.description}}" name="description" class="form-control"></div>
+      <div><label>talents:</label> <input type="text" value="{{user.Profile.talents}}" name="talents" class="form-control"></div>
+      <div><label>favorites:</label> <input type="text" value="{{user.Profile.favorites}}" name="favorites" class="form-control"></div>
+      <div><label>why:</label> <input type="text" value="{{user.Profile.why}}" name="why" class="form-control"></div>
+      <div><label>gender:</label> <input type="text" value="{{user.Profile.gender}}" name="gender" class="form-control"></div>
+      <div><label>marital:</label> <input type="text" value="{{user.Profile.marital}}" name="marital" class="form-control"></div>
+      <div><label>height:</label> <input type="text" value="{{user.Profile.height}}" name="height" class="form-control"></div>
+      <div><label>body:</label> <input type="text" value="{{user.Profile.body}}" name="body" class="form-control"></div>
+      <div><label>kids:</label> <input type="text" value="{{user.Profile.kids}}" name="kids" class="form-control"></div>
+      <div><label>occupation:</label> <input type="text" value="{{user.Profile.occupation}}" name="occupation" class="form-control"></div>
+      <input type="hidden" value="{{user.Profile.userId}}" name="userId" class="form-control">
+      <br>
+      <input type="submit" value="Submit" class='btn btn-primary'>
     </form>
     </div>
     {{/if}}
+
