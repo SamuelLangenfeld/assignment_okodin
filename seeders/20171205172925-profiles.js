@@ -16,6 +16,7 @@ module.exports = {
     let gender = num => (num % 2 === 0 ? 'male' : 'female');
     let married = num =>
       num % 3 === 0 ? 'single' : num % 3 === 1 ? 'dating' : 'married';
+    let age = num => 20 * num;
     var profiles = [];
     for (let i = 0; i < 10; i++) {
       profiles.push({
@@ -29,6 +30,7 @@ module.exports = {
         body: 'like a god',
         kids: 'zero',
         occupation: 'god',
+        age: age(i),
         userId: i + 1,
       });
     }

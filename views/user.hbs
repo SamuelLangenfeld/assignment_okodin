@@ -1,4 +1,7 @@
-<div>
+      
+          <img src="/viking_{{user.Profile.gender}}.jpg">
+
+      <div>
         {{user.fname}}
       </div>
       <div>
@@ -12,17 +15,19 @@
       </div>
       {{#if user.Profile}}
       <div>
-	      <div>{{user.Profile.description}}</div>
-	      <div>{{user.Profile.talents}}</div>
-	      <div>{{user.Profile.favorites}}</div>
-	      <div>{{user.Profile.why}}</div>
-	      <div>{{user.Profile.gender}}</div>
-	      <div>{{user.Profile.marital}}</div>
-	      <div>{{user.Profile.height}}</div>
-	      <div>{{user.Profile.body}}</div>
-	      <div>{{user.Profile.kids}}</div>
-	      <div>{{user.Profile.occupation}}</div>
-	      <div>{{user.Profile.userId}}</div>
+	      <div><strong>Description:</strong> {{user.Profile.description}}</div>
+	      <div><strong>talents:</strong> {{user.Profile.talents}}</div>
+	      <div><strong>favorites:</strong> {{user.Profile.favorites}}</div>
+	      <div><strong>why:</strong> {{user.Profile.why}}</div>
+	      <div><strong>gender:</strong> {{user.Profile.gender}}</div>
+	      <div><strong>marital:</strong> {{user.Profile.marital}}</div>
+	      <div><strong>height:</strong> {{user.Profile.height}}</div>
+	      <div><strong>body:</strong> {{user.Profile.body}}</div>
+	      <div><strong>kids:</strong> {{user.Profile.kids}}</div>
+	      <div><strong>occupation:</strong> {{user.Profile.occupation}}</div>
+	      <div><strong>userId:</strong> {{user.Profile.userId}}</div>
       </div>
       {{else}}
       {{/if}}
+
+      <a href="/users/{{user.id}}/edit"><button>Edit Profile</button></a>

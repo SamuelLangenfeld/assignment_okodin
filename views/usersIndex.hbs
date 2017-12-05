@@ -3,6 +3,7 @@
 <div class="row">
 	{{#each array as |user|}}
 	<div class="col-md-4">
+		<img src="/viking_{{user.Profile.gender}}.jpg">
 		<div class="{{user.Profile.marital}}">
 			<a href='/users/{{user.id}}'>
 				<div>

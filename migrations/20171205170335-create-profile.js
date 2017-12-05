@@ -42,6 +42,9 @@ module.exports = {
       occupation: {
         type: Sequelize.STRING,
       },
+      age: {
+        type: Sequelize.INTEGER,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -1,6 +1,6 @@
 <div class='container'>
 	<div class='row'>
-		<form class="form-control" action=''>
+		<form class="form-control" action='/users' method="post">
 			<input type='checkbox' name='gender' value='male'>Male
 			<input type='checkbox' name='gender' value='female'>Female
 			<select name="age"> 
@@ -8,9 +8,10 @@
 				<option value="100" selected>100</option>
 				<option value="over100">Over 100</option>
 			</select>
-			<input type='checkbox' name='status' value='single'id="single">Single
-			<input type='checkbox' name='status' value='dating' id="dating">Dating
-			<input type='checkbox' name='status' value='married' id="married">Married
+			<input type='checkbox' name='single' value='single'id="single">Single
+			<input type='checkbox' name='dating' value='dating' id="dating">Dating
+			<input type='checkbox' name='married' value='married' id="married">Married
+			<input class="float-right" type="submit">
 		</form>
 	</div>
 </div>
