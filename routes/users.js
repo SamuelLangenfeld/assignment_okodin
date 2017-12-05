@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require("../models");
 var User = models.User;
+let Profile = models.Profile;
 var sequelize = models.sequelize;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -20,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  User.findById(Number(req.params.id)).then(user => {
+  User.findById(Number(req.params.id), {include: [{ model: Profile }]}).then(user => {
       res.render('user', { user });
     })
     .catch(e => {
