@@ -6,14 +6,15 @@ let Profile = models.Profile;
 var sequelize = models.sequelize;
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  User.findAll({include: [{model: Profile}]})
+  User.findAll({ include: [{ model: Profile }] })
     .then(users => {
       let arrayOne = [];
       users.map((user, i) => {
         arrayOne[Math.floor(i / 3)] = arrayOne[Math.floor(i / 3)] || [];
         arrayOne[Math.floor(i / 3)][i % 3] = user;
       });
-      res.render('usersIndex', {arrayOne});
+      test = req.cookies.userId || 'login';
+      res.render('usersIndex', { arrayOne, test });
     })
     .catch(e => {
       console.error(e);
@@ -21,9 +22,10 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  User.findById(Number(req.params.id), {include: [{model: Profile}]})
+  User.findById(Number(req.params.id), { include: [{ model: Profile }] })
     .then(user => {
-      res.render('user', {user});
+      test = req.cookies.userId || 'login';
+      res.render('user', { user, test });
     })
     .catch(e => {
       console.error(e);
@@ -40,45 +42,46 @@ router.post('/', function(req, res, next) {
 
   if (req.body.age) {
     if (req.body.age === 'under100') {
-      params['age'] = {$lt: 100};
+      params['age'] = { $lt: 100 };
     }
     if (req.body.age === '100') {
       params['age'] = 100;
     }
     if (req.body.age === 'over100') {
-      params['age'] = {$gt: 100};
+      params['age'] = { $gt: 100 };
     }
   }
 
   let maritalArray = [];
   if (req.body.single) {
-    maritalArray.push({marital: req.body.single});
+    maritalArray.push({ marital: req.body.single });
   }
   if (req.body.married) {
-    maritalArray.push({marital: req.body.married});
+    maritalArray.push({ marital: req.body.married });
   }
   if (req.body.dating) {
-    maritalArray.push({marital: req.body.dating});
+    maritalArray.push({ marital: req.body.dating });
   }
   if (maritalArray.length) {
     params['$or'] = maritalArray;
   }
   User.findAll({
-    include: [{model: Profile, where: params}],
+    include: [{ model: Profile, where: params }],
   }).then(users => {
     let arrayOne = [];
     users.map((user, i) => {
       arrayOne[Math.floor(i / 3)] = arrayOne[Math.floor(i / 3)] || [];
       arrayOne[Math.floor(i / 3)][i % 3] = user;
     });
-    res.render('usersIndex', {arrayOne});
+    res.render('usersIndex', { arrayOne });
   });
 });
 
 router.get('/:id/edit', function(req, res, next) {
-  User.findById(Number(req.params.id), {include: [{model: Profile}]})
+  User.findById(Number(req.params.id), { include: [{ model: Profile }] })
     .then(user => {
-      res.render('editUser', {user});
+      test = req.cookies.userId || 'login';
+      res.render('editUser', { user, test });
     })
     .catch(e => {
       console.error(e);
@@ -104,9 +107,9 @@ router.post('/:id/edit', function(req, res, next) {
   profileObj.occupation = req.body.occupation;
   profileObj.age = req.body.age;
 
-  User.update(userObj, {where: {id: req.params.id}})
+  User.update(userObj, { where: { id: req.params.id } })
     .then(x => {
-      Profile.update(profileObj, {where: {userId: req.params.id}}).then(x => {
+      Profile.update(profileObj, { where: { userId: req.params.id } }).then(x => {
         res.redirect(`/users/${req.params.id}`);
       });
     })
