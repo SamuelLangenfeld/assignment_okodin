@@ -1,0 +1,20 @@
+{{#each arrayOne as |array|}}
+  <div class="row">
+  {{#each array as |user|}}
+    <div class="col-md-4">
+      <div>
+        {{user.fname}}
+      </div>
+      <div>
+        {{user.lname}}
+      </div>
+      <div>
+        {{user.username}}
+      </div>
+      <div>
+        {{user.email}}
+      </div>
+    </div>
+  {{/each}}
+  </div>
+{{/each}}
